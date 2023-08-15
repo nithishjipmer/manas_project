@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Balloon Pop Game</title>
+</head>
+
+<body>
+    <div class="jumbotron vertical-center">
+        <div class="container-fluid text-center">
+        
+            <div class="balloon" id="balloon"></div>
+        
+        
+            <div class="timer" id="timer">Timer: 10</div>
+            <div class="score" id="score">Score: 0</div>
+            <button id="start-btn" onclick="startBtnClicked()" class="btn btn-primary">Start</button>
+        </div>
+    </div>
+    
+
+    <audio id="audio" src="./audio/9mm-pistol-shoot-short-reverb-7152.mp3"></audio>
+    <script src="script.js"></script>
+</body>
+
+</html>
