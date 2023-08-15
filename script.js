@@ -1,14 +1,9 @@
-const balloon = document.getElementById("balloon");
 const timerDisplay = document.getElementById("timer");
 const scoreDisplay = document.getElementById("score");
 let score = 0;
 let timeLeft = 10;
 let timerInterval;
 let soundPlayed = false;
-
-balloon.addEventListener("click", () => {
-  popBalloon();
-});
 
 function playSound() {
   // Play your sound here
@@ -84,8 +79,183 @@ function startTimer() {
   }
 }
 
-function startBtnClicked() {
+let startBtn = document.querySelector("#start-btn");
+startBtn.addEventListener("click", function () {
   startTimer();
   startGame();
   document.getElementById("start-btn").style.display = "none";
-}
+});
+
+// balloon animation
+let mainSvg = document.querySelector(".main-svg");
+let secondSvg = document.querySelector(".second-svg");
+let thirdSvg = document.querySelector(".third-svg");
+let fourthSvg = document.querySelector(".fourth-svg");
+let content = document.querySelector(".content");
+let needle = document.querySelector(".needle");
+let audio = new Audio(
+  "http://soundbible.com/mp3/Balloon%20Popping-SoundBible.com-1247261379.mp3"
+);
+let normalMotion = document.querySelector(".normal-motion");
+let slowMotion = document.querySelector(".slow-motion");
+
+normalMotion.addEventListener("click", function () {
+  // game logic
+  popBalloon();
+
+  normalMotion.style.visibility = "hidden";
+  slowMotion.style.visibility = "hidden";
+  setTimeout(() => {
+    needle.style.left = "70vw";
+  }, 50);
+
+  setTimeout(() => {
+    needle.style.left = "60vw";
+  }, 70);
+
+  setTimeout(() => {
+    needle.style.left = "50vw";
+  }, 90);
+
+  setTimeout(() => {
+    needle.style.left = "45vw";
+  }, 110);
+
+  setTimeout(() => {
+    audio.play();
+    mainSvg.style.visibility = "hidden";
+    secondSvg.style.visibility = "visible";
+  }, 130);
+
+  setTimeout(() => {
+    thirdSvg.style.visibility = "visible";
+  }, 150);
+
+  setTimeout(() => {
+    content.style.opacity = ".9";
+  }, 170);
+
+  setTimeout(() => {
+    content.style.opacity = ".8";
+  }, 190);
+
+  setTimeout(() => {
+    content.style.opacity = ".7";
+  }, 210);
+
+  setTimeout(() => {
+    content.style.opacity = ".6";
+  }, 230);
+
+  setTimeout(() => {
+    content.style.opacity = ".4";
+  }, 250);
+
+  setTimeout(() => {
+    content.style.opacity = ".3";
+  }, 270);
+
+  setTimeout(() => {
+    content.style.opacity = ".2";
+  }, 290);
+
+  setTimeout(() => {
+    content.style.opacity = ".1";
+  }, 300);
+
+  setTimeout(() => {
+    content.style.opacity = "0";
+  }, 300);
+
+  setTimeout(() => {
+    mainSvg.style.visibility = "visible";
+    secondSvg.style.visibility = "hidden";
+    thirdSvg.style.visibility = "hidden";
+    content.style.opacity = "1";
+    needle.style.left = "80vw";
+  }, 320);
+
+  setTimeout(() => {
+    normalMotion.style.visibility = "visible";
+    slowMotion.style.visibility = "visible";
+  }, 1650);
+});
+
+slowMotion.addEventListener("click", function () {
+  normalMotion.style.visibility = "hidden";
+  slowMotion.style.visibility = "hidden";
+  setTimeout(() => {
+    needle.style.left = "70vw";
+  }, 100);
+
+  setTimeout(() => {
+    needle.style.left = "60vw";
+  }, 200);
+
+  setTimeout(() => {
+    needle.style.left = "50vw";
+  }, 300);
+
+  setTimeout(() => {
+    needle.style.left = "45vw";
+  }, 400);
+
+  setTimeout(() => {
+    audio.play();
+    mainSvg.style.visibility = "hidden";
+    secondSvg.style.visibility = "visible";
+  }, 500);
+
+  setTimeout(() => {
+    thirdSvg.style.visibility = "visible";
+  }, 600);
+
+  setTimeout(() => {
+    content.style.opacity = ".9";
+  }, 700);
+
+  setTimeout(() => {
+    content.style.opacity = ".8";
+  }, 800);
+
+  setTimeout(() => {
+    content.style.opacity = ".7";
+  }, 900);
+
+  setTimeout(() => {
+    content.style.opacity = ".6";
+  }, 1000);
+
+  setTimeout(() => {
+    content.style.opacity = ".4";
+  }, 1100);
+
+  setTimeout(() => {
+    content.style.opacity = ".3";
+  }, 1200);
+
+  setTimeout(() => {
+    content.style.opacity = ".2";
+  }, 1300);
+
+  setTimeout(() => {
+    content.style.opacity = ".1";
+  }, 1400);
+
+  setTimeout(() => {
+    content.style.opacity = "0";
+  }, 1500);
+
+  setTimeout(() => {
+    mainSvg.style.visibility = "visible";
+    secondSvg.style.visibility = "hidden";
+    thirdSvg.style.visibility = "hidden";
+    content.style.opacity = "1";
+    needle.style.left = "80vw";
+  }, 1600);
+
+  setTimeout(() => {
+    normalMotion.style.visibility = "visible";
+    slowMotion.style.visibility = "visible";
+  }, 1900);
+});
