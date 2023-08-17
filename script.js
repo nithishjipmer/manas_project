@@ -152,7 +152,6 @@ let secondSvg = document.querySelector(".second-svg");
 let thirdSvg = document.querySelector(".third-svg");
 let fourthSvg = document.querySelector(".fourth-svg");
 let content = document.querySelector(".content");
-let needle = document.querySelector(".needle");
 let audio = new Audio(
   "http://soundbible.com/mp3/Balloon%20Popping-SoundBible.com-1247261379.mp3"
 );
@@ -163,21 +162,6 @@ balloon.addEventListener("click", function () {
   popBalloon();
 
   balloon.style.visibility = "hidden";
-  setTimeout(() => {
-    needle.style.left = "70vw";
-  }, 50);
-
-  setTimeout(() => {
-    needle.style.left = "60vw";
-  }, 70);
-
-  setTimeout(() => {
-    needle.style.left = "50vw";
-  }, 90);
-
-  setTimeout(() => {
-    needle.style.left = "45vw";
-  }, 110);
 
   setTimeout(() => {
     audio.play();
@@ -230,7 +214,6 @@ balloon.addEventListener("click", function () {
     secondSvg.style.visibility = "hidden";
     thirdSvg.style.visibility = "hidden";
     content.style.opacity = "1";
-    needle.style.left = "80vw";
   }, 320);
 
   setTimeout(() => {
