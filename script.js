@@ -4,6 +4,7 @@ const paths = document.querySelectorAll(".color-change");
 const balloonColorVariations = ["#d83940", "#c5f71e", "#f79d1e", "#cc0bde"];
 const POP_TEXT = "POP!";
 const POP_DURATION = 1000;
+const OVERLAY_DURATION = 2000;
 let score = 0;
 let timeLeft = 10;
 let timerInterval;
@@ -28,15 +29,12 @@ function createPopText() {
   popElement.classList.add("pop-text");
 
   // Generate random position
-  const xPos = Math.random() * window.innerWidth;
-  const yPos = Math.random() * window.innerHeight;
+  const xPos = Math.random() * window.innerWidth * 0.8;
+  const yPos = Math.random() * window.innerHeight * 0.8;
 
   // Apply position
-  popElement.style.position = "absolute";
   popElement.style.left = xPos + "px";
   popElement.style.top = yPos + "px";
-  popElement.style.fontSize = "xxx-large";
-  popElement.style.fontWeight = "bolder";
 
   // Add to the document
   document.body.appendChild(popElement);
@@ -57,7 +55,12 @@ function showStimulus() {
 function showOverlay(text, duration) {
   const overlay = document.createElement("div");
   overlay.classList.add("overlay");
-  overlay.textContent = text;
+
+  const overlayText = document.createElement("div");
+  overlayText.classList.add("overlay-text");
+  overlayText.textContent = text;
+
+  overlay.appendChild(overlayText);
   document.body.appendChild(overlay);
 
   setTimeout(() => {
@@ -78,7 +81,18 @@ function restartTimer() {
   updateTimer();
 }
 
+function changeBalloonPosition() {
+  max = 80;
+  min = 10;
+  const xCoordinate = Math.floor(Math.random() * (max - min + 1)) + min;
+  allSvgs = document.querySelectorAll(".svg");
+  for (let i = 0; i < allSvgs.length; i++) {
+    allSvgs[i].style.transform = `translate(-${xCoordinate}%, -0%)`;
+  }
+}
+
 function startGame() {
+  changeBalloonPosition();
   const stimulusChance = Math.random() < 0.6; // 60% chance of sound
   const waitTime = 10 * 1000; // stimulus played after 10 seconds
   setTimeout(() => {
@@ -110,9 +124,13 @@ function popBalloon() {
     }
   }
 
-  updateScore();
-  restartTimer();
-  startGame();
+  // I want to show a overlay screen with get ready text
+  setTimeout(() => showOverlay("Next Round...", OVERLAY_DURATION), 300);
+  setTimeout(() => {
+    updateScore();
+    restartTimer();
+    startGame();
+  }, OVERLAY_DURATION);
 }
 
 function startTimer() {
@@ -129,14 +147,12 @@ function startTimer() {
     }
 
     // I want to show a overlay screen with get ready text
-    showOverlay("Next Round...", 2000);
+    showOverlay("Next Round...", OVERLAY_DURATION);
     setTimeout(() => {
       restartTimer();
       startGame();
       startTimer();
-    }, 2000);
-
-    
+    }, OVERLAY_DURATION);
   }
 }
 let startBtn = document.querySelector("#start-btn");
@@ -156,8 +172,9 @@ let audio = new Audio(
   "http://soundbible.com/mp3/Balloon%20Popping-SoundBible.com-1247261379.mp3"
 );
 let balloon = document.querySelector(".main-svg");
+let popTrigger = document.querySelector(".click-to-pop");
 
-balloon.addEventListener("click", function () {
+popTrigger.addEventListener("click", function () {
   // game logic
   popBalloon();
 

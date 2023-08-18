@@ -1,10 +1,15 @@
 html,
 body,
-.start-page, .game-screen {
+.start-page,
+.game-screen {
   width: 100%;
   height: 100%;
   background-color: #87ceeb !important;
   overflow: hidden !important;
+}
+
+.timer {
+  display: none;
 }
 
 p {
@@ -18,7 +23,6 @@ p {
   overflow: hidden;
 }
 
-
 .instructions {
   background-color: white;
   width: 40%;
@@ -30,35 +34,51 @@ p {
   margin-top: 10px;
 }
 
+/* pop text */
+.pop-text {
+  font-size: 80px;
+  font-weight: bolder;
+  position: absolute;
+}
+
 /* transition overlay */
 .overlay {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 40px 60px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  z-index: 999;
-  font-size: large;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.overlay-text {
+  text-align: center;
+  font-size: 50px;
   font-weight: bold;
-}	
+  color: black;
+  padding: 20px;
+  border-radius: 8px;
+}
+
 
 /* bottom navigation bar */
 .bottom-bar {
-	position: absolute;
-	bottom: 0px;
-	background-color: black;
-	width: 100%;
+  position: absolute;
+  bottom: 0px;
+  background-color: black;
+  width: 100%;
 }
 
 .bottom-bar-item {
-	background-color: white;
-	border-radius: 5px;
-	margin: 3px 0 3px 40px;
-	padding: 6px 6px 0 6px;
-	min-height: 40px;
+  background-color: white;
+  border-radius: 5px;
+  margin: 3px 0 3px 40px;
+  padding: 6px 6px 0 6px;
+  min-height: 40px;
 }
 
 /* balloon animation */
@@ -67,8 +87,12 @@ p {
   position: absolute;
 }
 
+.click-to-pop {
+  cursor: pointer;
+}
+
 svg {
-  cursor:pointer;
+  
   stroke-width: 0.3;
   fill: none;
   width: 100%;
@@ -82,19 +106,26 @@ svg {
   position: absolute;
 }
 
+.svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* transform: translate(-40%, -0%); */
+}
+
 .second-svg {
   visibility: hidden;
   position: absolute;
-  top: -120px;
-  left: -80px;
+  /* top: -120px;
+  left: -80px; */
 }
 
 .third-svg {
   z-index: -1;
   visibility: hidden;
   position: absolute;
-  top: -120px;
-  left: -60px;
+  /* top: -120px;
+  left: -60px; */
 }
 
 .rotate {
@@ -105,6 +136,7 @@ svg {
   transform: rotate(30deg);
 }
 
-
-
+.site {
+  overflow: hidden !important;
+}
 
