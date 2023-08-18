@@ -82,8 +82,8 @@ function restartTimer() {
 }
 
 function changeBalloonPosition() {
-  max = 80;
-  min = 10;
+  max = 70;
+  min = 40;
   const xCoordinate = Math.floor(Math.random() * (max - min + 1)) + min;
   allSvgs = document.querySelectorAll(".svg");
   for (let i = 0; i < allSvgs.length; i++) {
@@ -92,7 +92,7 @@ function changeBalloonPosition() {
 }
 
 function startGame() {
-  changeBalloonPosition();
+  // changeBalloonPosition();
   const stimulusChance = Math.random() < 0.6; // 60% chance of sound
   const waitTime = 10 * 1000; // stimulus played after 10 seconds
   setTimeout(() => {
